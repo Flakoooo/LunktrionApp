@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:LunktrionApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
+        x:Class="LunktrionApp.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Lunktrion"
+        Background="#1A1410"
+        Width="1920"
+        Height="1080">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="25*, 75*">
+        <Grid Grid.Column="0" RowDefinitions="30*, 60*"> 
+            <Border Grid.Row="0" Margin="12.5" Background="#241C16" CornerRadius="16" Padding="16">
+                <StackPanel Spacing="16">
+                    <Button Theme="{StaticResource OrangeButton}"
+                            Content="Текущее устройство" />
+                    <Button Theme="{StaticResource OrangeButton}"
+                            Content="Все устройства" />
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1" Margin="12.5" Background="#241C16" CornerRadius="16" >
+                <StackPanel Spacing="8">
+                    <Button Theme="{StaticResource OrangeButton}"
+                            Content="Активные устройства"
+                            Margin="16, 16, 16, 0"/>
+                    <StackPanel>
+                        <Border BorderThickness="0, 0, 0, 2" BorderBrush="#B85C1E">
+                            <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                                <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                                <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                            </StackPanel>
+                        </Border>
+                        <Border BorderThickness="0, 0, 0, 2" BorderBrush="#B85C1E">
+                            <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                                <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                                <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                            </StackPanel>
+                        </Border>
+                        <Border BorderThickness="0, 0, 0, 0" BorderBrush="#B85C1E">
+                            <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                                <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                                <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </StackPanel> 
+            </Border>
+        </Grid>
+        <StackPanel Grid.Column="1">
+            
+        </StackPanel>
+    </Grid>
+
+    <!--<StackPanel Orientation="Vertical" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Spacing="16">
+        <TextBox Text="{Binding Greeting}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+        <Border Margin="5" CornerRadius="10" Background="LightBlue">
+            <TextBlock Margin="15"
+                    FontSize="32"
+                    Text="Welcome to Avalonia!"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+        </Border>
+
+        <Grid ShowGridLines="False" Margin="5" 
+                ColumnDefinitions="120, 100"
+                RowDefinitions="Auto, Auto">
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="10">Celsius</TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0" Name="Celsius" TextChanged="Celsius_TextChanged"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Text="0" Name="Fahrenheit" IsReadOnly="True"/>
+        </Grid>
+
+        <Button HorizontalAlignment="Center" Click="Button_OnClick" IsEnabled="False">Calculate</Button>
+        <Button HorizontalAlignment="Center" Click="Button_OnClick" IsEnabled="False" Content="Calculate"/>
+        <Button>
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Color="Red" Offset="0" />
+                    <GradientStop Color="Blue" Offset="1" />
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/avalonia-logo.ico" Width="16" Height="16" />
+                    <TextBlock Text="Click me" Margin="4,0,0,0" />
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel> -->
+</Window>
