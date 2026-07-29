@@ -3,6 +3,7 @@
         xmlns:vm="using:LunktrionApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ic="using:FluentIcons.Avalonia"
         mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
         x:Class="LunktrionApp.Views.MainWindow"
         x:DataType="vm:MainViewModel"
@@ -20,7 +21,7 @@
 
     <Grid ColumnDefinitions="25*, 75*">
         <Grid Grid.Column="0" RowDefinitions="30*, 60*"> 
-            <Border Grid.Row="0" Margin="12.5" Background="#241C16" CornerRadius="16" Padding="16">
+            <Border Grid.Row="0" Margin="25, 25, 12.5, 12.5" Background="#241C16" CornerRadius="16" Padding="16">
                 <StackPanel Spacing="16">
                     <Button Theme="{StaticResource OrangeButton}"
                             Content="Текущее устройство" />
@@ -28,7 +29,7 @@
                             Content="Все устройства" />
                 </StackPanel>
             </Border>
-            <Border Grid.Row="1" Margin="12.5" Background="#241C16" CornerRadius="16" >
+            <Border Grid.Row="1" Margin="25, 12.5, 12.5, 25" Background="#241C16" CornerRadius="16" >
                 <StackPanel Spacing="8">
                     <Button Theme="{StaticResource OrangeButton}"
                             Content="Активные устройства"
@@ -56,50 +57,99 @@
                 </StackPanel> 
             </Border>
         </Grid>
-        <StackPanel Grid.Column="1">
-            
-        </StackPanel>
-    </Grid>
-
-    <!--<StackPanel Orientation="Vertical" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" 
-                Spacing="16">
-        <TextBox Text="{Binding Greeting}"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
-        <Border Margin="5" CornerRadius="10" Background="LightBlue">
-            <TextBlock Margin="15"
-                    FontSize="32"
-                    Text="Welcome to Avalonia!"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
+        <Border Grid.Column="1" Margin="12.5, 25, 25, 25" Background="#241C16" CornerRadius="16">
+            <Grid RowDefinitions="30*, 70*">
+                <Border Grid.Row="0" BorderThickness="0, 0, 0, 2" BorderBrush="#B85C1E" Padding="25, 25, 25, 25">
+                    <Grid ColumnDefinitions="22*, 78*">
+                        <Border Grid.Column="0" 
+                                Width="250" 
+                                Height="250" 
+                                CornerRadius="125"
+                                Background="#F5E6D8"
+                                HorizontalAlignment="Left">
+                            <ic:FluentIcon Icon="Laptop" 
+                                            IconVariant="Filled" 
+                                            IconSize="Size48" 
+                                            FontSize="200"
+                                            Foreground="#FF8033" 
+                                            HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center" />
+                        </Border>
+                        <Grid Grid.Column="1" RowDefinitions="25*, 25*, 25*, 25*">
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="16" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock FontSize="32" Foreground="#A8998D" Text="В сети" />
+                                <Ellipse Fill="#5FA866" Width="25" Height="25" />
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" FontSize="40" Foreground="#F5E6D8" Text="НАЗВАНИЕ УСТРОЙСТВА" />
+                            <TextBlock Grid.Row="2" FontSize="32" Foreground="#A8998D" Text="НАЗВАНИЕ ОС" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1" ColumnDefinitions="70*, 30*" Margin="20">
+                    <StackPanel Grid.Column="0" Spacing="20">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <ic:FluentIcon Icon="DesktopFlow" 
+                                           IconVariant="Filled" 
+                                           IconSize="Size20" 
+                                           FontSize="100"
+                                           Foreground="#FF8033" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Grid.Row="1" FontSize="32" Foreground="#F5E6D8" Text="НАЗВАНИЕ ПРОЦЕССОРА" />
+                                <TextBlock Grid.Row="2" FontSize="32" Foreground="#A8998D" Text="Ядер N, Потоков N, Частота NNNN MHz" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <ic:FluentIcon Icon="DesktopCursor" 
+                                           IconVariant="Filled" 
+                                           IconSize="Size20" 
+                                           FontSize="100"
+                                           Foreground="#FF8033" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Grid.Row="1" FontSize="32" Foreground="#F5E6D8" Text="НАЗВАНИЕ ВИДЕОКАРТЫ" />
+                                <TextBlock Grid.Row="2" FontSize="32" Foreground="#A8998D" Text="Объем NN GB" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <ic:FluentIcon Icon="Memory" 
+                                           IconVariant="Filled" 
+                                           IconSize="Size16" 
+                                           FontSize="100"
+                                           Foreground="#FF8033" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Grid.Row="1" FontSize="32" Foreground="#F5E6D8" Text="ОЗУ" />
+                                <TextBlock Grid.Row="2" FontSize="32" Foreground="#A8998D" Text="Тип DDRN, Объем NN GB, Частота NNNN MHz" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <ic:FluentIcon Icon="HardDrive" 
+                                           IconVariant="Filled" 
+                                           IconSize="Size20" 
+                                           FontSize="100"
+                                           Foreground="#FF8033" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" />
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Grid.Row="1" FontSize="32" Foreground="#F5E6D8" Text="Диски" />
+                                <TextBlock Grid.Row="2" FontSize="32" Foreground="#A8998D" Text="Объем NNNN GB, Разделов NN" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Spacing="20">
+                        <Button Theme="{StaticResource OrangeButton}"
+                                Content="Выполнить команду на устройстве" />
+                        <Button Theme="{StaticResource OrangeButton}"
+                                Content="Получить снимок экрана" />
+                        <Button Theme="{StaticResource RedButton}"
+                                Content="Выключить устройство" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Border>
-
-        <Grid ShowGridLines="False" Margin="5" 
-                ColumnDefinitions="120, 100"
-                RowDefinitions="Auto, Auto">
-            <TextBlock Grid.Row="0" Grid.Column="0" Margin="10">Celsius</TextBlock>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0" Name="Celsius" TextChanged="Celsius_TextChanged"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="10">Fahrenheit</TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Text="0" Name="Fahrenheit" IsReadOnly="True"/>
-        </Grid>
-
-        <Button HorizontalAlignment="Center" Click="Button_OnClick" IsEnabled="False">Calculate</Button>
-        <Button HorizontalAlignment="Center" Click="Button_OnClick" IsEnabled="False" Content="Calculate"/>
-        <Button>
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-                    <GradientStop Color="Red" Offset="0" />
-                    <GradientStop Color="Blue" Offset="1" />
-                </LinearGradientBrush>
-            </Button.Background>
-            <Button.Content>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Assets/avalonia-logo.ico" Width="16" Height="16" />
-                    <TextBlock Text="Click me" Margin="4,0,0,0" />
-                </StackPanel>
-            </Button.Content>
-        </Button>
-    </StackPanel> -->
+    </Grid>
 </Window>
