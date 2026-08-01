@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:LunktrionApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LunktrionApp.Views.ActiveDevicesList"
+             x:DataType="vm:ActiveDevicesListViewModel">
+
+    <Design.DataContext>
+        <vm:ActiveDevicesListViewModel />
+    </Design.DataContext>
+
+    <Border Margin="25, 12.5, 12.5, 25" Background="#241C16" CornerRadius="16" >
+        <StackPanel Spacing="8">
+            <Button Theme="{StaticResource OrangeButton}"
+                    Content="Активные устройства"
+                    Margin="16, 16, 16, 0"/>
+            <StackPanel>
+                <Border BorderThickness="0, 0, 0, 2" BorderBrush="#B85C1E">
+                    <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                        <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                        <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="0, 0, 0, 2" BorderBrush="#B85C1E">
+                    <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                        <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                        <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="0, 0, 0, 0" BorderBrush="#B85C1E">
+                    <StackPanel Margin="16, 16, 16, 16" Spacing="12">
+                        <TextBlock FontSize="24" Text="Название устройства" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
+                        <TextBlock FontSize="24" Text="Название ОС" Foreground="#A8998D" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel> 
+    </Border>
+</UserControl>
