@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using LunktrionApp.Services;
-using LunktrionApp.Views;
 using System;
 
 namespace LunktrionApp.ViewModels

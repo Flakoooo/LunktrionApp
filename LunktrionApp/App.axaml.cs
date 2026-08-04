@@ -19,17 +19,18 @@ public partial class App : Application
         var collection = new ServiceCollection();
         collection.AddCommonServices();
 
-        var services = collection.BuildServiceProvider();
+        var provider = collection.BuildServiceProvider();
 
-        var vm = services.GetRequiredService<MainViewModel>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = vm
+                DataContext = provider.GetRequiredService<MainViewModel>()
             };
         }
 
         base.OnFrameworkInitializationCompleted();
+
+        _ = provider.InitializeAsync();
     }
 }

@@ -23,12 +23,12 @@
                             Background="#F5E6D8"
                             HorizontalAlignment="Left">
                         <ic:FluentIcon Icon="Laptop" 
-                                        IconVariant="Filled" 
-                                        IconSize="Size48" 
-                                        FontSize="200"
-                                        Foreground="#FF8033" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center" />
+                                       IconVariant="Filled" 
+                                       IconSize="Size48" 
+                                       FontSize="200"
+                                       Foreground="#FF8033" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
                     </Border>
                     <Grid Grid.Column="1" RowDefinitions="25*, 25*, 25*, 25*">
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="16" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -44,12 +44,12 @@
                 <StackPanel Grid.Column="0" Spacing="20">
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <ic:FluentIcon Icon="DesktopFlow" 
-                                        IconVariant="Filled" 
-                                        IconSize="Size20" 
-                                        FontSize="100"
-                                        Foreground="#FF8033" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center" />
+                                       IconVariant="Filled" 
+                                       IconSize="Size20" 
+                                       FontSize="100"
+                                       Foreground="#FF8033" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock FontSize="32" Foreground="#F5E6D8" Text="{Binding DeviceCPUInfo.Name}" />
                             <TextBlock FontSize="24" Foreground="#A8998D" Text="{Binding DeviceCPUSpecifications}" />
@@ -57,12 +57,12 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <ic:FluentIcon Icon="DesktopCursor" 
-                                        IconVariant="Filled" 
-                                        IconSize="Size20" 
-                                        FontSize="100"
-                                        Foreground="#FF8033" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center" />
+                                       IconVariant="Filled" 
+                                       IconSize="Size20" 
+                                       FontSize="100"
+                                       Foreground="#FF8033" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock FontSize="32" Foreground="#F5E6D8" Text="{Binding DeviceGPUInfo.Name}" />
                             <TextBlock FontSize="24" Foreground="#A8998D" Text="{Binding DeviceGPUSpecifications}" />
@@ -70,12 +70,12 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <ic:FluentIcon Icon="Memory" 
-                                        IconVariant="Filled" 
-                                        IconSize="Size16" 
-                                        FontSize="100"
-                                        Foreground="#FF8033" 
-                                        HorizontalAlignment="Center" 
-                                        VerticalAlignment="Center" />
+                                       IconVariant="Filled" 
+                                       IconSize="Size16" 
+                                       FontSize="100"
+                                       Foreground="#FF8033" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" />
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock FontSize="32" Foreground="#F5E6D8" Text="ОЗУ" />
                             <TextBlock FontSize="24" Foreground="#A8998D" Text="{Binding DeviceRAMSpecifications}" />

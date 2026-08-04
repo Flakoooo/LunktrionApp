@@ -15,8 +15,7 @@ public partial class MainViewModel : ViewModelBase, IDisposable
     [ObservableProperty]
     public partial ViewModelBase? ActiveDevicesList { get; set; }
 
-    [ObservableProperty]
-    public partial ViewModelBase? CurrentPage { get; set; }
+    public ViewModelBase? CurrentViewModel => _navigationService.CurrentViewModel;
 
     public MainViewModel(
         NavigationPanelViewModel navigationPanelViewModel,
@@ -28,9 +27,7 @@ public partial class MainViewModel : ViewModelBase, IDisposable
         ActiveDevicesList = activeDevicesListViewModel;
         _navigationService = navigationService;
 
-        _navigationService.CurrentPageChanged += ChangeCurrentPage;
-
-        _navigationService.Navigate<DeviceViewModel>();
+        _navigationService.CurrentViewModelChanged += ChangeCurrentPage;
     }
 
     public MainViewModel()
@@ -45,17 +42,16 @@ public partial class MainViewModel : ViewModelBase, IDisposable
         _navigationService = new NavigationService();
         Navigation = new NavigationPanelViewModel();
         ActiveDevicesList = new ActiveDevicesListViewModel();
-        CurrentPage = new DeviceViewModel();
     }
 
-    private void ChangeCurrentPage()
+    private void ChangeCurrentPage(object? sender, EventArgs e)
     {
-        CurrentPage = _navigationService.CurrentPage;
+        OnPropertyChanged(nameof(CurrentViewModel));
     }
 
 
     public void Dispose()
     {
-        _navigationService.CurrentPageChanged -= ChangeCurrentPage;
+        _navigationService.CurrentViewModelChanged -= ChangeCurrentPage;
     }
 }
