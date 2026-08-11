@@ -14,9 +14,11 @@
     <Border Margin="25, 25, 12.5, 12.5" Background="#241C16" CornerRadius="16" Padding="16">
         <StackPanel Spacing="16">
             <Button Theme="{StaticResource OrangeButton}"
-                    Content="Текущее устройство" />
+                    Content="Текущее устройство"
+                    Command="{Binding NavigateToCurrentDeviceCommandCommand}" />
             <Button Theme="{StaticResource OrangeButton}"
-                    Content="Все устройства" />
+                    Content="Все устройства"
+                    Command="{Binding NavigateToAllDevicesCommandCommand}"/>
         </StackPanel>
     </Border>
 </UserControl>

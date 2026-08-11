@@ -45,17 +45,22 @@ namespace LunktrionApp.ViewModels
             {
                 CurrentDevice = await _identityService.GetCurrentDeviceAsync(true);
                 IsCurrentDevice = true;
+
+                DeviceCPUInfo = await _infoService.GetDeviceCPUInfoAsync(true);
+                DeviceGPUInfo = await _infoService.GetDeviceGPUInfoAsync(true);
+                DeviceRAMInfo = await _infoService.GetDeviceRAMInfoAsync(true);
+                DeviceDriveInfo = await _infoService.GetDeviceDriveInfoAsync(true);
             }
             else
             {
                 CurrentDevice = device;
                 IsCurrentDevice = CurrentDevice.Id == (await _identityService.GetCurrentDeviceAsync(true)).Id;
-            }
 
-            DeviceCPUInfo = await _infoService.GetDeviceCPUInfoAsync(true);
-            DeviceGPUInfo = await _infoService.GetDeviceGPUInfoAsync(true);
-            DeviceRAMInfo = await _infoService.GetDeviceRAMInfoAsync(true);
-            DeviceDriveInfo = await _infoService.GetDeviceDriveInfoAsync(true);
+                DeviceCPUInfo = null;
+                DeviceGPUInfo = null;
+                DeviceRAMInfo = null;
+                DeviceDriveInfo = null;
+            }
         }
 
         public DeviceViewModel(

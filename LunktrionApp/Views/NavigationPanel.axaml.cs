@@ -8,17 +8,5 @@ namespace LunktrionApp.Views
         {
             InitializeComponent();
         }
-
-        //[RelayCommand]
-        //private void OpenSettings()
-        //{
-        //    CurrentPage = new SettingsViewModel();
-        //}
-
-        //[RelayCommand]
-        //private void OpenHome()
-        //{
-        //    CurrentPage = new HomeViewModel();
-        //}
     }
 }

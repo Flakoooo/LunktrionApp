@@ -17,7 +17,7 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="25*, 75*">
-        <Grid Grid.Column="0" RowDefinitions="30*, 60*"> 
+        <Grid Grid.Column="0" RowDefinitions="30*, 70*"> 
             <ContentControl Grid.Row="0" Content="{Binding Navigation}" />
             <ContentControl Grid.Row="1" Content="{Binding ActiveDevicesList}" />
         </Grid>

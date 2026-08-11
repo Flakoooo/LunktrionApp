@@ -49,6 +49,8 @@ namespace LunktrionApp.Services
 
         public async Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase
         {
+            CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
+
             var viewModel = _provider.GetRequiredService<TViewModel>();
 
             if (viewModel is IAsyncInitializable initializable)
@@ -59,6 +61,8 @@ namespace LunktrionApp.Services
 
         public async Task NavigateAsync<TViewModel, TParameter>(TParameter parameter) where TViewModel : ViewModelBase
         {
+            CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
+
             var viewModel = _provider.GetRequiredService<TViewModel>();
 
             if (viewModel is IAsyncInitializable<TParameter> initializable)
