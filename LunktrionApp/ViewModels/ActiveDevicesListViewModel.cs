@@ -1,6 +1,8 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.Input;
-using LunktrionApp.Models;
+using LunktrionApp.Hubs;
+using LunktrionApp.Models.Entities;
 using LunktrionApp.Services;
 using System;
 using System.Collections.ObjectModel;
@@ -8,32 +10,19 @@ using System.Threading.Tasks;
 
 namespace LunktrionApp.ViewModels
 {
-    public partial class ActiveDevicesListViewModel : ViewModelBase
+    public partial class ActiveDevicesListViewModel : ViewModelBase, IDisposable
     {
+        private readonly MainHub _mainHub;
         private readonly NavigationService _navigationService;
 
         public ObservableCollection<DeviceIdentity> Devices { get; } = [];
 
-        public ActiveDevicesListViewModel(NavigationService navigationService)
+        public ActiveDevicesListViewModel(MainHub mainHub, NavigationService navigationService)
         {
+            _mainHub = mainHub;
             _navigationService = navigationService;
 
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
+            _mainHub.OnDeviceConnected += NewDeviceConnected;
         }
 
         public ActiveDevicesListViewModel()
@@ -45,12 +34,13 @@ namespace LunktrionApp.ViewModels
                 );
             }
 
+            _mainHub = null!;
             _navigationService = null!;
 
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк", OperatingSystemName: "Windows OS"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон унопочный", OperatingSystemName: "Linux"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк 2", OperatingSystemName: "Windows OS 2"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон телепатический", OperatingSystemName: "Linux Windows"));
         }
 
         private async Task NavigateToDevice(DeviceIdentity device)
@@ -62,6 +52,16 @@ namespace LunktrionApp.ViewModels
         public async Task NavigateToDeviceCommandAsync(DeviceIdentity device)
         {
             await NavigateToDevice(device);
+        }
+
+        private void NewDeviceConnected(DeviceIdentity newDevice)
+        {
+            Dispatcher.UIThread.Post(() => Devices.Add(newDevice));
+        }
+
+        public void Dispose()
+        {
+            _mainHub.OnDeviceConnected -= NewDeviceConnected;
         }
     }
 }

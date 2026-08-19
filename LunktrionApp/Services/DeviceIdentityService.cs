@@ -1,4 +1,5 @@
-﻿using LunktrionApp.Models;
+﻿using LunktrionApp.Models.Entities;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace LunktrionApp.Services
     public class DeviceIdentityService
     {
         private readonly HardwareService _hardwareService;
+        private DateTime _lastRefreshTime = DateTime.MinValue;
 
         public DeviceIdentityService(HardwareService hardwareService)
         {
@@ -18,28 +20,27 @@ namespace LunktrionApp.Services
             _hardwareService = null!;
         }
 
-        public async Task<DeviceIdentity> GetCurrentDeviceAsync(bool refresh = false)
+        public async Task<DeviceIdentity> GetCurrentDeviceAsync()
         {
-            if (refresh)
+            if (_lastRefreshTime.AddMinutes(5) < DateTime.Now)
             {
                 await _hardwareService.RefreshComputerSystemList();
                 await _hardwareService.RefreshOperatingSystem();
+                _lastRefreshTime = DateTime.Now;
             }
 
             var computerSystem = _hardwareService.Hardware.ComputerSystemList.FirstOrDefault();
 
             return computerSystem is null
-                ? new DeviceIdentity
-                {
-                    OSName = _hardwareService.Hardware.OperatingSystem.Name
-                }
-                : new DeviceIdentity
-                {
-                    Id = computerSystem.UUID,
-                    DeviceName = computerSystem.Name,
-                    OSName = _hardwareService.Hardware.OperatingSystem.Name,
-                    Manufacturer = computerSystem.Vendor
-                };
+                ? new DeviceIdentity(
+                    OperatingSystemName: _hardwareService.Hardware.OperatingSystem.Name
+                )
+                : new DeviceIdentity(
+                    computerSystem.UUID, 
+                    computerSystem.Name, 
+                    _hardwareService.Hardware.OperatingSystem.Name, 
+                    computerSystem.Vendor
+                );
         }
     }
 }

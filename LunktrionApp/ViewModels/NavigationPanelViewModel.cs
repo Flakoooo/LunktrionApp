@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
-using LunktrionApp.Models;
+using LunktrionApp.Models.Entities;
 using LunktrionApp.Services;
 using System;
 using System.Threading.Tasks;

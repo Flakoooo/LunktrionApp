@@ -60,8 +60,8 @@
                                   ColumnSpacing="12"
                                   Background="Transparent">
                                 <TextBlock Grid.Column="1" FontSize="24" Text="{Binding DeviceName}" Foreground="#F5E6D8" />
-                                <TextBlock Grid.Column="2" FontSize="24" Text="{Binding OSName}" Foreground="#A8998D" />
-                                <TextBlock Grid.Column="3" FontSize="24" Text="{Binding Manufacturer}" Foreground="#A8998D" />
+                                <TextBlock Grid.Column="2" FontSize="24" Text="{Binding OperatingSystemName}" Foreground="#A8998D" />
+                                <TextBlock Grid.Column="3" FontSize="24" Text="{Binding DeviceManufacturer}" Foreground="#A8998D" />
                             </Grid>
                         </Button>
                     </DataTemplate>

@@ -56,7 +56,7 @@
                             
                             <StackPanel Margin="16, 8, 8, 8" Spacing="12">
                                 <TextBlock FontSize="24" Text="{Binding DeviceName}" Foreground="#F5E6D8" Margin="0, 4, 0, 0" />
-                                <TextBlock FontSize="24" Text="{Binding OSName}" Foreground="#A8998D" />
+                                <TextBlock FontSize="24" Text="{Binding OperatingSystemName}" Foreground="#A8998D" />
                             </StackPanel>
                         </Button>
                     </DataTemplate>

@@ -1,4 +1,4 @@
-﻿using LunktrionApp.Models;
+﻿using LunktrionApp.Models.Entities;
 using LunktrionApp.Models.Interfaces;
 using LunktrionApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,8 +10,9 @@ namespace LunktrionApp.Services
     public class NavigationService : IAsyncInitializable
     {
         private readonly IServiceProvider _provider;
+        private bool _isNavigating;
 
-        public event EventHandler? CurrentViewModelChanged;
+        public event Action? CurrentViewModelChanged;
 
         public NavigationService(IServiceProvider provider)
         {
@@ -38,7 +39,7 @@ namespace LunktrionApp.Services
 
                 _currentViewModel = value;
 
-                CurrentViewModelChanged?.Invoke(this, EventArgs.Empty);
+                CurrentViewModelChanged?.Invoke();
             }
         }
 
@@ -49,26 +50,54 @@ namespace LunktrionApp.Services
 
         public async Task NavigateAsync<TViewModel>() where TViewModel : ViewModelBase
         {
-            CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
+            if (_isNavigating) return;
+            _isNavigating = true;
 
-            var viewModel = _provider.GetRequiredService<TViewModel>();
+            try
+            {
+                var oldViewModel = CurrentViewModel;
+                var newViewModel = _provider.GetRequiredService<TViewModel>();
 
-            if (viewModel is IAsyncInitializable initializable)
-                await initializable.InitializeAsync();
+                CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
 
-            CurrentViewModel = viewModel;
+                if (newViewModel is IAsyncInitializable initializable)
+                    await initializable.InitializeAsync();
+
+                if (oldViewModel is IDisposable disposable)
+                    disposable.Dispose();
+
+                CurrentViewModel = newViewModel;
+            }
+            finally
+            {
+                _isNavigating = false;
+            }
         }
 
         public async Task NavigateAsync<TViewModel, TParameter>(TParameter parameter) where TViewModel : ViewModelBase
         {
-            CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
+            if (_isNavigating) return;
+            _isNavigating = true;
 
-            var viewModel = _provider.GetRequiredService<TViewModel>();
+            try
+            {
+                var oldViewModel = CurrentViewModel;
+                var newViewModel = _provider.GetRequiredService<TViewModel>();
 
-            if (viewModel is IAsyncInitializable<TParameter> initializable)
-                await initializable.InitializeAsync(parameter);
+                CurrentViewModel = _provider.GetRequiredService<LoadingViewModel>();
 
-            CurrentViewModel = viewModel;
+                if (newViewModel is IAsyncInitializable<TParameter> initializable)
+                    await initializable.InitializeAsync(parameter);
+
+                if (oldViewModel is IDisposable disposable)
+                    disposable.Dispose();
+
+                CurrentViewModel = newViewModel;
+            }
+            finally
+            {
+                _isNavigating = false;
+            }
         }
     }
 }

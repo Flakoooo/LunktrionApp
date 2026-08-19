@@ -14,7 +14,7 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
-    public override void OnFrameworkInitializationCompleted()
+    public override async void OnFrameworkInitializationCompleted()
     {
         var collection = new ServiceCollection();
         collection.AddCommonServices();
@@ -29,8 +29,8 @@ public partial class App : Application
             };
         }
 
-        base.OnFrameworkInitializationCompleted();
-
         _ = provider.InitializeAsync();
+
+        base.OnFrameworkInitializationCompleted();
     }
 }

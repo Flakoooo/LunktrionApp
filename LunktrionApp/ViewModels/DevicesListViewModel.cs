@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Input;
-using LunktrionApp.Models;
+using LunktrionApp.Models.Entities;
 using LunktrionApp.Services;
 using System;
 using System.Collections.ObjectModel;
@@ -17,23 +17,6 @@ namespace LunktrionApp.ViewModels
         public DevicesListViewModel(NavigationService navigationService)
         {
             _navigationService = navigationService;
-
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS", Manufacturer = "MSI" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux", Manufacturer = "MSI" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2", Manufacturer = "ASUS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows", Manufacturer = "IPHONE" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS", Manufacturer = "ACER" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
         }
 
         public DevicesListViewModel()
@@ -47,22 +30,22 @@ namespace LunktrionApp.ViewModels
 
             _navigationService = null!;
 
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS", Manufacturer = "MSI" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux", Manufacturer = "MSI" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2", Manufacturer = "ASUS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows", Manufacturer = "IPHONE" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS", Manufacturer = "ACER" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк", OSName = "Windows OS" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон унопочный", OSName = "Linux" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Крутой пк 2", OSName = "Windows OS 2" });
-            Devices.Add(new DeviceIdentity { DeviceName = "Телефон телепатический", OSName = "Linux Windows" });
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк", OperatingSystemName: "Windows OS", DeviceManufacturer: "MSI"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон унопочный", OperatingSystemName: "Linux", DeviceManufacturer: "MSI"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк 2", OperatingSystemName: "Windows OS 2", DeviceManufacturer: "ASUS"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон телепатический", OperatingSystemName: "Linux Windows", DeviceManufacturer: "IPHONE"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк", OperatingSystemName: "Windows OS", DeviceManufacturer: "ACER"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон унопочный", OperatingSystemName: "Linux"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк 2", OperatingSystemName: "Windows OS 2"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон телепатический", OperatingSystemName: "Linux Windows"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк", OperatingSystemName: "Windows OS"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон унопочный", OperatingSystemName: "Linux"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк 2", OperatingSystemName: "Windows OS 2"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон телепатический", OperatingSystemName: "Linux Windows"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк", OperatingSystemName: "Windows OS"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон унопочный", OperatingSystemName: "Linux"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Крутой пк 2", OperatingSystemName: "Windows OS 2"));
+            Devices.Add(new DeviceIdentity(DeviceName: "Телефон телепатический", OperatingSystemName: "Linux Windows"));
         }
 
         private async Task NavigateToDevice(DeviceIdentity device)

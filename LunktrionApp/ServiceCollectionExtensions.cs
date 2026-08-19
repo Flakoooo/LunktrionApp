@@ -1,4 +1,5 @@
-﻿using LunktrionApp.Models.Interfaces;
+﻿using LunktrionApp.Hubs;
+using LunktrionApp.Models.Interfaces;
 using LunktrionApp.Services;
 using LunktrionApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,13 +21,21 @@ namespace LunktrionApp
             collection.AddSingleton<DeviceIdentityService>();
             collection.AddSingleton<DeviceInfoService>();
 
+            collection.AddSingleton<MainHub>();
+
+            collection.AddSingleton<CommandExecutorService>();
+
             // ViewModels
             collection.AddSingleton<LoadingViewModel>();
             collection.AddSingleton<ActiveDevicesListViewModel>();
             collection.AddSingleton<NavigationPanelViewModel>();
-            collection.AddTransient<MainViewModel>();
+
+            collection.AddSingleton<MainViewModel>();
+            collection.AddSingleton<IAsyncInitializable>(sp => sp.GetRequiredService<MainViewModel>());
+
             collection.AddTransient<DeviceViewModel>();
             collection.AddTransient<DevicesListViewModel>();
+            collection.AddTransient<DeviceCommandConsoleViewModel>();
         }
 
         public static async Task InitializeAsync(this IServiceProvider provider)
